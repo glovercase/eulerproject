@@ -87,7 +87,7 @@ public class eulerp1 {
 	public static void p5a(){
 		int number =1;
 		boolean smallest = false;
-		for(int i = 1; i < 999999999; i++){
+		for(int i = 20; i < 999999999; i+=20){
 			if(smallest){
 				System.out.println(number);
 				break;
@@ -106,44 +106,8 @@ public class eulerp1 {
 		}
 	}
 	
-	public static void p5(){
-		//What is the smallest positive number that is evenly divisible by all of the number from 1 to 20
-		//loop through numbers one to twenty 
-		//check if each number is divisible 
-		boolean isSmallest = false;
-		double smallest = 0;
-		
-		for(int x = 20; x < Double.MAX_VALUE; x += 20){
-			if(isSmallest){
-				System.out.println(smallest);
-				break;
-			}
-		for(PrimeNumber pn : PrimeNumber.values()){
-			if(x % pn.getValue() == 0){
-				smallest = x;
-				isSmallest = true;
-			}else{
-				isSmallest = false;
-				break;
-			}
-			
-		}
-		
-		}
-	}
 	
-	private enum PrimeNumber {
-		TWO(2), THREE(3), FIVE(5), SEVEN(7), ELEVEN(11), THRITEEN(13), SEVENTEEN(17), NINETEEN(19);
-		private final int value;
-		
-		private PrimeNumber(int val){
-			this.value = val;
-		}
-		
-		public int getValue(){
-			return value;
-		}
-	}
+
 	
 	public static void p6(){
 		//Find the difference between the sum of the squares of the first one hundred natural number and the square of the sum
@@ -243,6 +207,6 @@ public class eulerp1 {
 
 	public static void main(String[] args){
 		
-			p8();
+			p5a();
 	}
 }
