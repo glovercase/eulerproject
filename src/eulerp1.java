@@ -1,4 +1,5 @@
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.TreeSet;
 
 
@@ -81,7 +82,7 @@ public class eulerp1 {
 		return 0;
 	}
 
-	public static void p5a() {
+	public static void p5() {
 		int number = 1;
 		boolean smallest = false;
 		for (int i = 20; i < 999999999; i += 20) {
@@ -188,35 +189,60 @@ public class eulerp1 {
 	}
 	
 	public static void p9(){
-		//a = m2 - n2, b = 2mn, c=m2+n2
-		// a<b<c
-		//a2 + b2 = c2
-		//a+b+c= 1000
+		// a = m2 - n2, b = 2mn, c=m2+n2
+		// a<b<c   // a2 + b2 = c2   // a+b+c= 1000
 		int sum = 1000;
 		int a = 0;
 		int b = 0;
 		int c = 0;
-		for(int n = 1; n < 500; n++){
-			for(int m = 2; m < 500; m++){
-			 a = 2 * m * n;
-			// System.out.println(b);
-			 b = (m*m)-(n*n);
-			// System.out.println(a);
-		     c = (m*m)+(n*n);
-		    // System.out.println(c);
-		     if((a+b+c) == sum){
-					System.out.println(a +" "+b+" "+c);
-					System.out.println(a*b*c);
+		for (int n = 1; n < 500; n++) {
+			for (int m = 2; m < 500; m++) {
+				a = 2 * m * n;
+				b = (m * m) - (n * n);
+				c = (m * m) + (n * n);
+				if ((a + b + c) == sum) {
+					System.out.println(a + " " + b + " " + c);
+					System.out.println(a * b * c);
 					return;
 				}
 			}
-			
+
 		}
 	}
-
+	
+	public static void p10(){
+		//Find the summation of primes below 2million
+		double twomill = 20000;
+		double summation = 0;
+		double p = 2;
+		ArrayList<Double> primes = new ArrayList<Double>();
+		primes.add(p);
+		for(p = 3; p < twomill; p+=2){
+			if(p < 9){
+				primes.add(p);
+			}else {
+				Boolean prime = true;
+				for (Double f : primes) {
+					if (p % f == 0) {
+						prime = false;
+						break;
+					}
+				}
+				if (prime) {
+					primes.add(p);
+				}
+			}
+		}
+		for(Double pr : primes){
+			summation += pr;
+			//System.out.println(pr);
+		}
+		System.out.println(summation);
+	
+	}
 
 	public static void main(String[] args) {
 
-		p9();
+		p10();
 	}
 }
