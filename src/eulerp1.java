@@ -1,4 +1,6 @@
+import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.math.MathContext;
 import java.util.ArrayList;
 import java.util.TreeSet;
 
@@ -212,13 +214,14 @@ public class eulerp1 {
 	
 	public static void p10(){
 		//Find the summation of primes below 2million
-		double twomill = 20000;
-		double summation = 0;
+		double twomill = 200000;
+		long summation = 0;
 		double p = 2;
 		ArrayList<Double> primes = new ArrayList<Double>();
 		primes.add(p);
 		for(p = 3; p < twomill; p+=2){
 			if(p < 9){
+				summation += p;
 				primes.add(p);
 			}else {
 				Boolean prime = true;
@@ -229,15 +232,15 @@ public class eulerp1 {
 					}
 				}
 				if (prime) {
+					summation += p;
 					primes.add(p);
 				}
 			}
 		}
-		for(Double pr : primes){
-			summation += pr;
-			//System.out.println(pr);
-		}
-		System.out.println(summation);
+		System.out.println("g");
+		BigInteger sum = new BigInteger("0");
+		sum = BigDecimal.valueOf(summation).toBigInteger();
+		System.out.println(sum);
 	
 	}
 
